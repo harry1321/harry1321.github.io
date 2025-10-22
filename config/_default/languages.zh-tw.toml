@@ -1,0 +1,23 @@
+languageCode = "en"
+languageName = "English"
+languageDirection = "ltr"
+weight = 1
+
+title = "Harry Yang"
+# copyright = "Copy, _right?_ :thinking_face:"
+
+[params]
+  dateFormat = "2 January 2006"
+
+  # mainSections = ["section1", "section2"]
+  # description = "My awesome website"
+
+[params.author]
+  name = "Harry Yang"
+  image = "img/author.png"
+  headline = "Space to keep notes and more. It's all about output."
+  # bio = "A little bit about you" #It will be displayed in article footers.
+  # links = [
+  #   { github = "https://github.com/harry1321" },
+  #   { linkedin = "https://linkedin.com/in/ntuhyu" }
+  # ]
