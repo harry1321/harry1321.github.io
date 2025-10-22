@@ -1,0 +1,17 @@
+# https://pre-commit.ci/#configuration
+ci:
+  autoupdate_branch: ""
+  autoupdate_commit_msg: "ci: pre-commit autoupdate"
+  autoupdate_schedule: monthly
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-toml
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
