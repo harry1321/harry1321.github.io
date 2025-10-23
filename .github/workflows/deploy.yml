@@ -24,6 +24,8 @@ jobs:
   build:
     name: 🛠 Build
     runs-on: ubuntu-latest
+    env:
+      HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
     steps:
       - name: 🛒 Checkout
         uses: actions/checkout@v5
@@ -45,7 +47,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ${{ runner.temp }}/hugo_cache
-          key: hugo-${{ github.run_id }}
+          key: hugo-${{ hashFiles('**/go.mod', '**/package-lock.json') }}
           restore-keys:
             hugo-
 
@@ -53,8 +55,7 @@ jobs:
         shell: bash
         run: |
           hugo --gc --minify \
-          --baseURL ${{ steps.pages.outputs.base_url }} \
-          --cacheDir ${{ runner.temp }}/hugo_cache
+          --baseURL "${{ steps.pages.outputs.base_url }}"
 
       - name: 💿Cache save
         id: cache-save
