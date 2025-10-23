@@ -52,7 +52,8 @@ jobs:
       - name: 🏗️ Build with Hugo
         shell: bash
         run: |
-          hugo --gc --minify --baseURL ${{ steps.pages.outputs.base_url }}\
+          hugo --gc --minify \
+          --baseURL ${{ steps.pages.outputs.base_url }} \
           --cacheDir ${{ runner.temp }}/hugo_cache
 
       - name: 💿Cache save
@@ -68,6 +69,7 @@ jobs:
           path: ./public
 
   deploy:
+    name: 🚀deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
