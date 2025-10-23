@@ -45,14 +45,15 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ${{ runner.temp }}/hugo_cache
-          key: hugo-${{ github.run_id }}
+          key: hugo-${{ hashFiles('hugo.toml', 'params.yaml') }} 
           restore-keys:
             hugo-
       
       - name: 🏗️ Build with Hugo
         shell: bash
         run: |
-          hugo --gc --minify --baseURL ${{ steps.pages.outputs.base_url }}
+          hugo --gc --minify --baseURL ${{ steps.pages.outputs.base_url }}\
+          --cacheDir ${{ runner.temp }}/hugo_cache
       
       - name: 💿Cache save
         id: cache-save
@@ -63,7 +64,6 @@ jobs:
       
       - name: ⬆️ Upload artifact
         uses: actions/upload-pages-artifact@v3
-        if: ${{ inputs.upload == 'true' }}
         with:
           path: ./public
 
