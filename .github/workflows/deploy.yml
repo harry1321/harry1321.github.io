@@ -40,28 +40,11 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
 
-      - name: 💽Cache restore
-        id: cache-restore
-        uses: actions/cache/restore@v4
-        with:
-          path: ${{ runner.temp }}/hugo_cache
-          key: hugo-${{ hashFiles('**/go.mod', '**/package-lock.json') }}
-          restore-keys:
-            hugo-
-
       - name: 🏗️ Build with Hugo
         shell: bash
         run: |
           hugo --gc --minify \
-          --baseURL "${{ steps.pages.outputs.base_url }}" \
-          --cacheDir "${{ runner.temp }}/hugo_cache"
-
-      - name: 💿Cache save
-        id: cache-save
-        uses: actions/cache/save@v4
-        with:
-          path: ${{ runner.temp }}/hugo_cache
-          key: ${{ steps.cache-restore.outputs.cache-primary-key }}
+          --baseURL "${{ steps.pages.outputs.base_url }}"
 
       - name: ⬆️ Upload artifact
         uses: actions/upload-pages-artifact@v3
