@@ -30,6 +30,19 @@ jobs:
         with:
           submodules: recursive
 
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: "package.json"
+
+      - name: 📦 Install Congo dependencies
+        run: |
+          cd themes/congo
+          npm ci
+
+      - name: 🏗️ Build CSS
+        run: npm run css-build
+
       - name: ⚙️ Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
