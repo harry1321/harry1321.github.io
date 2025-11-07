@@ -6,7 +6,7 @@
       "node": ">=20.0.0"
     },
     "scripts": {
-      "server": "hugo server --disableFastRender -D",
+      "server": "hugo server --disableFastRender -D && npm run css-dev",
       "css-dev": "cross-env NODE_ENV=development ./themes/congo/node_modules/tailwindcss/lib/cli.js -c ./themes/congo/tailwind.config.js -i ./themes/congo/assets/css/main.css -o ./assets/css/compiled/main.css --jit -w",
       "css-build": "NODE_ENV=production ./themes/congo/node_modules/tailwindcss/lib/cli.js -c ./themes/congo/tailwind.config.js -i ./themes/congo/assets/css/main.css -o ./assets/css/compiled/main.css --jit"
     },
