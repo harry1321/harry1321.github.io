@@ -6,8 +6,11 @@
   unsafe = true
 
 [highlight]
-  noClasses = false
+    codeFences = true
+    guessSyntax = true
+    noClasses = true
+    style = "nordic"
 
 [tableOfContents]
-  startLevel = 2
+  startLevel = 1
   endLevel = 4
