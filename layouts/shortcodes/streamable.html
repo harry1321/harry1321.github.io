@@ -1,0 +1,11 @@
+{{ $id := .Get "id" }}
+{{ $autoplay := "0" }}
+{{ $loop := "0" }}
+
+{{ if isset .Params "autoplay" }}{{ $autoplay = .Get "autoplay" }}{{ end }}
+{{ if isset .Params "loop" }}{{ $loop = .Get "loop" }}{{ end }}
+<div style="width:100%;height:0px;position:relative;padding-bottom:40%;">
+    <iframe src="https://streamable.com/e/{{ $id }}?autoplay={{ $autoplay }}&loop={{ $loop }}" frameborder="0"
+        allowfullscreen allow="autoplay"
+        style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe>
+</div>
