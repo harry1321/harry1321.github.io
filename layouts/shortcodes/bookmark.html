@@ -1,0 +1,11 @@
+<!-- https://zonego.tw/post/hugo-shortcode/ -->
+<a href={{ .Get "link" }} target="_blank">
+  <div class="bookmark">
+    <div class="logo">
+        {{- $iconFile := resources.GetMatch "icons/world.svg" -}}
+        {{ replace $iconFile.Content "icon" "icon bookmark-icon" | safeHTML }}
+        <span class="name">{{ .Get "name" }}</span>
+    </div>
+    <div class="description">{{ .Get "description" }}</div>
+  </div>
+</a>
